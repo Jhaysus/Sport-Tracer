@@ -1,0 +1,87 @@
+.NavBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: #111;
+    color: white;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+  }
+  
+  .logo {
+    font-weight: 700;
+    font-size: 20px;
+  }
+  
+  /* DESKTOP: menu shows inline */
+  .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;       
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .navLink {
+    color: white;
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+  
+  .navLink:hover {
+    background: #2a2a2a;
+  }
+  
+  /* hamburger button hidden on desktop */
+  .menuButton {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* small bar at bottom */
+  .smallBar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background: white;
+  }
+  
+  /* MOBILE: hide menu until opened, show hamburger */
+  @media (max-width: 768px) {
+    .menuButton {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .menu {
+      position: absolute;
+      top: 64px;
+      right: 16px;
+      background: #1b1b1b;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 12px;
+      flex-direction: column;
+      gap: 10px;
+      display: none;     
+      min-width: 160px;
+    }
+  
+    .open {
+      display: flex;     
+    }
+  }
+  
