@@ -1,6 +1,9 @@
 import { useState } from "react";
 
+
 export default function Home() {
+  const [isAdmin, setIsAdmin] = useState(false);
+
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -30,10 +33,8 @@ export default function Home() {
   }
 
   return (
-    <div style={{ width: "400px", marginLeft: "55vh auto", textAlign:"center", padding: "50px"}}>
-
-      
-      {/* Welcome Header */}
+    <div style={{ maxWidth: 800, margin: "40px auto", fontFamily: "Arial" }}>
+      {/* hero header */}
       <div style={{ marginBottom: "30px", textAlign: "center" }}>
         <h1>Welcome to My Sports Blog</h1>
         <small>{new Date().toLocaleDateString()}</small>
@@ -42,41 +43,17 @@ export default function Home() {
         </p>
       </div>
 
-      {/* Post Form */}
-      <form onSubmit={addPost} style={{ marginBottom: 30 }}>
-        <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Post title"
-          style={{ width: "100%", padding: 10, marginBottom: 10 }}
-        />
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Write your post..."
-          style={{ width: "100%", padding: 10, height: 100 }}
-        />
-        <button style={{ padding: "10px 20px", marginTop: 10 }}>
-          Publish
-        </button>
-      </form>
+      {isAdmin ? (
+        <form onSubmit={addPost} style={{ marginBottom: 30 }}>
+          {/* inputs */}
+        </form>
+      ) : (
+        <p style={{ color: "#777", marginBottom: 30, justifyContent:"center", marginLeft:"10px"}}>
+          Sign in as an Admin to publish posts.
+        </p>
+      )}
 
-      {/* Blog Posts */}
-      {posts.map((post) => (
-        <div
-          key={post.id}
-          style={{
-            border: "1px solid #ddd",
-            padding: 20,
-            marginBottom: 20,
-            borderRadius: 8,
-          }}
-        >
-          <h2>{post.title}</h2>
-          <small>{post.date}</small>
-          <p>{post.content}</p>
-        </div>
-      ))}
+      {/* posts rendering */}
     </div>
   );
 }
